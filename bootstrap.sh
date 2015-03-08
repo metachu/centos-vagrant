@@ -7,8 +7,12 @@ sudo yum install -y epel-release
 sudo yum install -y emacs-nox git python-pip htop golang mosh fish
 sudo pip install ipython 
 
-sudo chsh -s /usr/bin/fish vagrant
 
 mkdir -p ~/.config/fish
+ln -s /vagrant/provision/fish/* ~/.config/fish/
+
+mkdir -p ~/.emacs.d
+ln -s /vagrant/provision/init.el ~/.emacs.d/
 
 
+sudo chsh -s /usr/bin/fish vagrant
