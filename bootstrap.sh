@@ -14,5 +14,9 @@ ln -s /vagrant/provision/fish/* ~/.config/fish/
 mkdir -p ~/.emacs.d
 ln -s /vagrant/provision/init.el ~/.emacs.d/
 
+
+git config --global user.name "William Chu"
+git config --global user.email "chudood@gmail.com" 
+
 echo "vagrant" | sudo passwd --stdin vagrant
 sudo chsh -s /usr/bin/fish vagrant

@@ -2,8 +2,8 @@
 (global-set-key (kbd "C-z") 'undo)
 (setq visible-bell t)
 (setq backup-inhibited t)
-
 (setq auto-save-default nil)
+(setq make-backup-files nil)
 (setq transient-mark-mode t)
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq column-number-mode t)
@@ -30,6 +30,7 @@
 
 ;;Only do these packaging things only if emacs >24
 (when (>= emacs-major-version 24)
+  (load-theme 'wombat t)
   (require 'package)
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
   (package-initialize)
