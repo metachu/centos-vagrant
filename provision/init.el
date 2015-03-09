@@ -18,7 +18,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["#303030" "#ff4b4b" "#d7ff5f" "#fce94f" "#5fafd7" "#d18aff" "#afd7ff" "#c6c6c6"])
- '(custom-safe-themes (quote ("a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" default))))
+ '(custom-enabled-themes (quote (smart-mode-line-light)))
+ '(custom-safe-themes (quote ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "4e262566c3d57706c70e403d440146a5440de056dfaeb3062f004da1711d83fc" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -41,12 +42,12 @@
   (require 'req-package)
   ;;We have downloaded and installed req package
 
-  (req-package moe-theme
-    :init (progn (moe-dark))
-    )
+;;  (req-package moe-theme
+;;    :init (progn (moe-dark))
+;;    )
   
-  (req-package rinari
-    )
+;;  (req-package rinari
+;;    )
 
   
   (req-package linum
@@ -85,13 +86,13 @@
   (req-package ace-jump-mode
     :bind ("C-c ." . ace-jump-mode))
 
-  (req-package smart-mode-line
-    :init (progn
-	    (setq sml/shorten-directory t
-		  sml/shorten-modes t
-		  sml/theme 'automatic))
-    :config (progn
-	      (sml/setup)))
+;  (req-package smart-mode-line
+;    :init (progn
+;	    (setq sml/shorten-directory t
+;		  sml/shorten-modes t
+;		  sml/theme 'automatic))
+;n    :config (progn
+;	      (sml/setup)))
 
   (req-package magit
     :diminish magit-auto-revert-mode)

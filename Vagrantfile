@@ -5,11 +5,9 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box= "chef/centos-7.0"
+  config.vm.box= "puppetlabs/centos-7.0-64-puppet"
 
   # gives a name to our box  	
-  config.vm.define :centosvm do |t|
-  end
 
   config.vm.provision :shell, path: "bootstrap.sh"
 
