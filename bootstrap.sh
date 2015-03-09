@@ -14,5 +14,5 @@ ln -s /vagrant/provision/fish/* ~/.config/fish/
 mkdir -p ~/.emacs.d
 ln -s /vagrant/provision/init.el ~/.emacs.d/
 
-
+echo "vagrant" | sudo passwd --stdin vagrant
 sudo chsh -s /usr/bin/fish vagrant
