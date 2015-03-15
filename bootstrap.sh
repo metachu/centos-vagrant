@@ -8,11 +8,6 @@ sudo yum install -y epel-release
 sudo yum install -y emacs-nox git python-pip htop golang mosh fish vim-enhanced
 sudo pip install ipython 
 
-mkdir -p ~/go
-go get -u github.com/nsf/gocode
-go get -u github.com/rogpeppe/godef
-
-
 mkdir -p ~/git
 cd ~/git
 git clone https://github.com/metachu/centos-vagrant .
@@ -29,3 +24,8 @@ git config --global user.email "chudood@gmail.com"
 
 echo "vagrant" | sudo passwd --stdin vagrant
 sudo chsh -s /usr/bin/fish vagrant
+SET GOPATH=/home/vagrant/go
+mkdir -p ~/go
+go get -u github.com/nsf/gocode
+go get -u github.com/rogpeppe/godef
+

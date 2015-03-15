@@ -1,0 +1,6 @@
+*
+!.gitignore
+.vagrant*
+!provision
+!VagrantFile
+!bootstrap.sh

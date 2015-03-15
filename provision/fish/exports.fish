@@ -1,2 +1,2 @@
 set -x PATH $PATH $HOME/go/bin
-#set -x GOPATH $HOME/go
+set -x GOPATH $HOME/go
