@@ -1,8 +1,8 @@
-;;REQUIRED BASICS
+;;;REQUIRED BASICS
 (global-set-key (kbd "C-z") 'undo)
 (setq visible-bell t)
 (setq backup-inhibited t)
-
+(setq make-backup-files nil)
 (setq auto-save-default nil)
 (setq transient-mark-mode t)
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -10,7 +10,10 @@
 (setq initial-scratch-message nil)
 (setq inhibit-startup-message t)
 (setq-default cursor-type 'bar)
-(global-hl-line-mode)
+
+(setq-default tab-width 4)
+	
+
 ;;custom vars leave these here
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -18,7 +21,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["#303030" "#ff4b4b" "#d7ff5f" "#fce94f" "#5fafd7" "#d18aff" "#afd7ff" "#c6c6c6"])
- '(custom-enabled-themes (quote (smart-mode-line-light)))
  '(custom-safe-themes (quote ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "4e262566c3d57706c70e403d440146a5440de056dfaeb3062f004da1711d83fc" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "756597b162f1be60a12dbd52bab71d40d6a2845a3e3c2584c6573ee9c332a66e" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -33,8 +35,7 @@
   (require 'package)
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
   (package-initialize)
-  
-
+  (load-theme 'wombat)
   (if (not (package-installed-p 'req-package))
     (progn
       (package-refresh-contents)
@@ -42,9 +43,9 @@
   (require 'req-package)
   ;;We have downloaded and installed req package
 
-;;  (req-package moe-theme
-;;    :init (progn (moe-dark))
-;;    )
+  (req-package moe-theme
+    :init (progn (moe-dark))
+    )
   
 ;;  (req-package rinari
 ;;    )
@@ -86,13 +87,6 @@
   (req-package ace-jump-mode
     :bind ("C-c ." . ace-jump-mode))
 
-;  (req-package smart-mode-line
-;    :init (progn
-;	    (setq sml/shorten-directory t
-;		  sml/shorten-modes t
-;		  sml/theme 'automatic))
-;n    :config (progn
-;	      (sml/setup)))
 
   (req-package magit
     :diminish magit-auto-revert-mode)
@@ -105,18 +99,37 @@
   (req-package rainbow-delimiters
     :config
       (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
-  ;;elpy
-  ;;ruby
-  ;;rinari
-  ;;html
-  ;;sass
-  ;;helm
-  ;;git
 
+  
+  (req-package go-mode
+    :require  company-go go-eldoc
+    :bind ("C-c C-c" . compile)
+    :init
+    (progn
+      (add-hook 'before-save-hook 'gofmt-before-save)
+      (add-hook 'go-mode-hook (lambda ()
+				(progn
+				  (flycheck-mode)
+				  (set (make-local-variable 'company-backends) '(company-go))
+				  (if (not (string-match "go" compile-command))
+				      (set (make-local-variable 'compile-command)
+					   (concat "go run \"" (buffer-file-name) "\"")))
+				  )))
+       
+      (add-hook 'go-mode-hook 'go-eldoc-setup)
+      ))
+
+  (req-package company-go)
+  (req-package flycheck)
+  (req-package go-eldoc)
+  (req-package company
+    :init
+
+      (add-hook 'prog-mode-hook '(lambda () (company-mode))))
+
+  
   (req-package-finish);; load the packages now
 )
-
-
 
 ;; custom keybinds based on laptop
 (when (string= system-name "jessie.home.metachu.com")

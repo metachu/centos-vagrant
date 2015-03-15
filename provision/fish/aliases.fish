@@ -7,6 +7,7 @@ alias lr='ls -ahlFrt'
 alias ll='ls -ahlF'
 
 alias v='vim'
+alias vi='vim'
 alias g='git'
 alias psef='ps -ef | grep'
 
