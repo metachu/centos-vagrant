@@ -8,6 +8,8 @@ sudo yum install -y epel-release
 sudo yum install -y emacs-nox git python-pip htop golang mosh fish vim-enhanced
 sudo pip install ipython 
 
+sudo yum remove -y firewalld
+
 mkdir -p ~/git
 cd ~/git
 git clone https://github.com/metachu/centos-vagrant .

@@ -10,5 +10,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # gives a name to our box  	
 
   config.vm.provision :shell, path: "bootstrap.sh"
-
+  config.vm.network "public_network"
 end
