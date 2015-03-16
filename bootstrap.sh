@@ -23,9 +23,11 @@ git config --global user.name "William Chu"
 git config --global user.email "chudood@gmail.com" 
 
 echo "vagrant" | sudo passwd --stdin vagrant
-sudo chsh -s /usr/bin/fish vagrant
-SET GOPATH=/home/vagrant/go
-mkdir -p ~/go
+su vagrant << EOF
+set GOPATH=/home/vagrant/go
+mkdir -p /home/vagrant/go
 go get -u github.com/nsf/gocode
 go get -u github.com/rogpeppe/godef
+EOF 
+sudo chsh -s /usr/bin/fish vagrant
 
