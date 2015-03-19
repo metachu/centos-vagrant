@@ -45,7 +45,6 @@
   ;;We have downloaded and installed req package
 
   (req-package moe-theme
-    :init (progn (moe-dark))
     )
   
 ;;  (req-package rinari
@@ -100,23 +99,20 @@
   (req-package rainbow-delimiters
     :config
       (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
-
   
   (req-package go-mode
-    :require  company-go go-eldoc
     :bind ("C-c C-c" . compile)
     :init
     (progn
       (add-hook 'before-save-hook 'gofmt-before-save)
       (add-hook 'go-mode-hook (lambda ()
-				(progn
-				  (flycheck-mode)
-				  (set (make-local-variable 'company-backends) '(company-go))
-				  (if (not (string-match "go" compile-command))
-				      (set (make-local-variable 'compile-command)
-					   (concat "go run \"" (buffer-file-name) "\"")))
-				  )))
-       
+  				(progn
+  				  (flycheck-mode)
+  				  (set (make-local-variable 'company-backends) '(company-go))
+  				  (if (not (string-match "go" compile-command))
+  				      (set (make-local-variable 'compile-command)
+  					   (concat "go run \"" (buffer-file-name) "\"")))
+  				  )))
       (add-hook 'go-mode-hook 'go-eldoc-setup)
       ))
 
@@ -130,7 +126,9 @@
 
   
   (req-package-finish);; load the packages now
+  (moe-dark)
 )
+
 
 ;; custom keybinds based on laptop
 (when (string= system-name "jessie.home.metachu.com")

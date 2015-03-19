@@ -16,6 +16,8 @@ export GOPATH=/home/vagrant/go
 mkdir -p /home/vagrant/go
 go get -u github.com/nsf/gocode
 go get -u github.com/rogpeppe/godef
+sudo yum remove -y firewalld
+
 
 
 mkdir -p /home/vagrant/.emacs.d
