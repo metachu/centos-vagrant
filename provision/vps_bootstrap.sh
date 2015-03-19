@@ -2,7 +2,7 @@
 mkdir -p ~/.emacs.d
 ln -s init.el ~/.emacs.d/
 mkdir -p ~/.config/
-ln -s fish /home/vagrant/.config/
+ln -s fish ~/.config/
 
 cd /etc/yum.repos.d/
 wget http://download.opensuse.org/repositories/shells:fish:release:2/CentOS_7/shells:fish:release:2.repo
@@ -21,3 +21,4 @@ go get -u github.com/rogpeppe/godef
 git config --global user.name "William Chu"
 git config --global user.email "chudood@gmail.com" 
 
+chsh -s /usr/bin/fish
