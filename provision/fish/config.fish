@@ -3,7 +3,7 @@ function emacs
 		if ps -ef | grep "emacs --daemon" | grep -v grep | grep (whoami)
 		 	env emacsclient -t $argv
 		else
-			emacs --daemon
+			env emacs --daemon
 			env emacsclient -t $argv	
 		end
 end
