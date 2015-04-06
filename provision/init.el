@@ -19,7 +19,10 @@
 (when (>= emacs-major-version 24)
   (load-theme 'wombat t)
   (require 'package)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  (push '("marmalade" . "http://marmalade-repo.org/packages/")
+        package-archives )
+  (push '("melpa" . "http://melpa.milkbox.net/packages/")
+        package-archives)
   (package-initialize)
   (load-theme 'wombat)
   (if (not (package-installed-p 'req-package))
@@ -61,7 +64,7 @@
     :init
     (progn
       (bind-key "M-i" 'helm-swoop)
-      (defzine-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+      (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
       ))
 
   
@@ -84,7 +87,7 @@
   (req-package rainbow-delimiters
     :config
       (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
-  
+
   (req-package go-mode
     :bind ("C-c C-c" . compile)
     :init
@@ -105,9 +108,20 @@
   (req-package flycheck)
   (req-package go-eldoc)
   (req-package company
+	:bind ("M-/" . company-complete)
     :init
+	(progn
+	  (add-hook 'prog-mode-hook '(lambda () (company-mode)))
+	  (define-key company-active-map (kbd "\C-n") 'company-select-next)
+	  (define-key company-active-map (kbd "\C-p") 'company-select-previous)
+	  (define-key company-active-map (kbd "\C-d") 'company-show-doc-buffer)
+	  (define-key company-active-map (kbd "\C-g") '(lambda ()
+                                                  (interactive)
+                                                  (company-abort)))
+	  )
+	)
 
-      (add-hook 'prog-mode-hook '(lambda () (company-mode))))
+
   (req-package yasnippet
 	:bind ("C-c C-y" . yas/insert-snippet)
 	:init
@@ -133,6 +147,11 @@
 (global-set-key (kbd "C-x t") 'metachu-visit-term-buffer)
 (global-set-key (kbd "C-x i") 'metachu-visit-init-file)
 
+;; scrolling
+(setq linum-delay t)
+;; scrolling to always be a line at a time
+(setq scroll-conservatively 10000)
+
 
 
 ;;custom vars leave these here
@@ -149,4 +168,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
