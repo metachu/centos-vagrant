@@ -5,7 +5,7 @@ sudo wget http://download.opensuse.org/repositories/shells:fish:release:2/CentOS
 cd ~
 sudo yum update -y
 sudo yum install -y epel-release
-sudo yum install -y emacs-nox git python-pip htop golang mosh fish vim-enhanced
+sudo yum install -y emacs-nox git python-pip htop golang mosh fish vim-enhanced unzip screen 
 sudo pip install ipython 
 su vagrant
 

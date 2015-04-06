@@ -131,6 +131,17 @@
   (moe-dark)
 )
 
+;;4gl-mode
+
+(when (file-exists-p "~/.emacs.d/4gl-mode")
+  (add-to-list 'load-path "~/.emacs.d/4gl-mode")
+  (push "~/.emacs.d/4gl-mode/snippets/"
+        yas-snippet-dirs )
+  (require '4gl-mode)
+  )
+
+
+
 ;;;; KEYBINDINGS
 (defun metachu-visit-term-buffer ()
   (interactive)
