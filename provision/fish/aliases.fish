@@ -1,6 +1,7 @@
 alias ..="cd .."
 # List only directories
 alias lsd='ls -la | grep "^d"'
+alias lsa='ls -la'
 # list in reverse (most recent at bottom) everything
 alias lr='ls -ahlFrt'
 # list everything
